@@ -19,10 +19,12 @@ def build_model(args):
 
     if(args.weights != 'default'):
         if torch.cuda.is_available():
-            model.load_state_dict(torch.load(args.weights), strict=True)
+            state = torch.load(args.weights)
+            model.load_state_dict(state, strict=True)
             model.cuda()
         else:
-            model.load_state_dict(torch.load(args.weights), strict=True, map_location='cpu')
+            state = torch.load(args.weights, map_location=torch.device('cpu'))
+            model.load_state_dict(state, strict=True, map_location='cpu')
 
     return model
 
