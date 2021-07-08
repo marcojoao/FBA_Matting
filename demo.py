@@ -14,7 +14,11 @@ import torch
 
 
 def np_to_torch(x):
-    return torch.from_numpy(x).permute(2, 0, 1)[None, :, :, :].float().cuda()
+    if torch.cuda.is_available():
+        return torch.from_numpy(x).permute(2, 0, 1)[None, :, :, :].float().cuda()
+    else:
+        return torch.from_numpy(x).permute(2, 0, 1)[None, :, :, :].float()
+
 
 
 def scale_input(x: np.ndarray, scale: float, scale_type) -> np.ndarray:
