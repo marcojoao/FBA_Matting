@@ -50,7 +50,10 @@ def groupnorm_denormalise_image(img, format='nhwc'):
         for i in range(3):
             img[:, :, :, i] = img[:, :, :, i] * group_norm_std[i] + group_norm_mean[i]
     else:
-        img1 = torch.zeros_like(img).cuda()
+        if torch.cuda.is_available():
+            img1 = torch.zeros_like(img).cuda()
+        else:
+            img1 = torch.zeros_like(img)
         for i in range(3):
             img1[:, i, :, :] = img[:, i, :, :] * group_norm_std[i] + group_norm_mean[i]
         return img1
