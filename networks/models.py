@@ -16,12 +16,15 @@ def build_model(args):
     net_decoder = builder.build_decoder(arch=args.decoder, batch_norm=batch_norm)
 
     model = MattingModule(net_encoder, net_decoder)
-
-    model.cuda()
+    if torch.cuda.is_available():
+        model.cuda()
 
     if(args.weights != 'default'):
         sd = torch.load(args.weights)
-        model.load_state_dict(sd, strict=True)
+        if torch.cuda.is_available():
+            model.load_state_dict(sd, strict=True)
+        else:
+            model.load_state_dict(sd, strict=True, map_location='cpu')
 
     return model
 
