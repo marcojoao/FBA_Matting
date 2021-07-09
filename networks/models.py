@@ -23,8 +23,8 @@ def build_model(args):
             model.load_state_dict(state, strict=True)
             model.cuda()
         else:
-            state = torch.load(args.weights, map_location=torch.device('cpu'))
-            model.load_state_dict(state, strict=True, map_location='cpu')
+            state = torch.load(args.weights, map_location='cpu')
+            model.load_state_dict(state, strict=True)
 
     return model
 
