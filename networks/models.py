@@ -1,8 +1,8 @@
 import torch
 import torch.nn as nn
-import networks.resnet_GN_WS as resnet_GN_WS
-import networks.layers_WS as L
-import networks.resnet_bn as resnet_bn
+import FBA_Matting.networks.resnet_GN_WS as resnet_GN_WS
+import FBA_Matting.networks.layers_WS as L
+import FBA_Matting.networks.resnet_bn as resnet_bn
 
 
 def build_model(args):

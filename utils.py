@@ -1,7 +1,8 @@
 # Our libs
-from networks.transforms import trimap_transform, groupnorm_normalise_image
-from networks.models import build_model
-from dataloader import PredDataset
+from FBA_Matting.networks.transforms import trimap_transform, groupnorm_normalise_image
+from FBA_Matting.networks.models import build_model
+from FBA_Matting.dataloader import PredDataset
+
 
 # System libs
 import os

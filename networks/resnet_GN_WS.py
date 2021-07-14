@@ -1,5 +1,5 @@
 import torch.nn as nn
-import networks.layers_WS as L
+import FBA_Matting.networks.layers_WS as L
 
 __all__ = ['ResNet', 'l_resnet50']
 
